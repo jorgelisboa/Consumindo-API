@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">DeliverMe</string>
+    <string name="str_btn">Confirmar</string>
+    <string name="txt_explicacao">Agora preencha seu CEP corretamente para enviarmos sua encomenda com todos cuidados necessários.</string>
+    <string name="cep_hint">Insira seu CEP</string>
+</resources>

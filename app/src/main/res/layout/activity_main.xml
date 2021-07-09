@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentBottom="true"
+    android:background="#8383ED"
+    android:paddingLeft="?attr/listPreferredItemPaddingEnd"
+    android:paddingRight="?attr/listPreferredItemPaddingEnd"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnAction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="250dp"
+        android:backgroundTint="#3657CD"
+        android:onClick="useApi"
+        android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+        android:paddingRight="?attr/listPreferredItemPaddingEnd"
+        android:text="@string/str_btn"
+        android:textColor="#E3DDDD"
+        app:cornerRadius="12dp" />
+
+    <EditText
+        android:id="@+id/etCep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnAction"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#FFFDFD"
+        android:ems="10"
+        android:hint="@string/cep_hint"
+        android:inputType="number"
+        android:maxLength="8"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="169dp"
+        android:layout_height="151dp"
+        android:layout_above="@id/textView"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/correio" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/etCep"
+        android:layout_marginTop="32dp"
+        android:text="@string/txt_explicacao"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+</RelativeLayout>
