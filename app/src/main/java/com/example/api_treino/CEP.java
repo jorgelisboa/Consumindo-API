@@ -1,21 +1,25 @@
 package com.example.api_treino;
 
-public class CEP {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class CEP implements Parcelable {
     String cep;
     String logradouro;
     String complemento;
     String bairro;
     String localidade;
     String uf;
+    String ibge;
+    String gia;
+    String ddd;
+    String siafi;
 
     public CEP() {
 
     }
 
-    String ibge;
-    String gia;
-    String ddd;
-    String siafi;
+
 
     public String getCep() {
         return cep;
@@ -95,5 +99,25 @@ public class CEP {
 
     public void setSiafi(String siafi) {
         this.siafi = siafi;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeString(cep);
+        dest.writeString(logradouro);
+        dest.writeString(complemento);
+        dest.writeString(bairro);
+        dest.writeString(localidade);
+        dest.writeString(uf);
+        dest.writeString(ibge);
+        dest.writeString(gia);
+        dest.writeString(ddd);
+        dest.writeString(siafi);
     }
 }

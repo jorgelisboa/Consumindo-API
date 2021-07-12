@@ -1,11 +1,22 @@
 package com.example.api_treino;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.loader.content.AsyncTaskLoader;
 
+import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnAction;
     private EditText etCep;
     private List<CEP> ceps = new ArrayList<>();
+    public static final String CHANNEL_1_ID = "channel1";
+    public static final String CHANNEL_2_ID = "channel2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         etCep = findViewById(R.id.etCep);
         btnAction = findViewById(R.id.btnAction);
+
+
     }
 
     public void useApi(View view) {
@@ -39,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         tarefa.execute("https://viacep.com.br/ws/" + etCep.getText().toString() + "/json/");
     }
 
-    private class Tarefa extends AsyncTask<String, String, String>{
+
+    private class Tarefa extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... strings) {
             String retorno = ApiConection.getData(strings[0]);
@@ -55,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
         private void exibirDados() {
             if (ceps != null){
                 for(CEP cep : ceps){
-                    Log.d("test", "ceps != null");
-                    Toast.makeText(MainActivity.this, "Enviaeremos seu pedido para " + cep.getBairro() + " em " + cep.getLocalidade(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                    intent.putExtra("cep", cep);
+                    startActivity(intent);
                 }
             }
         }
