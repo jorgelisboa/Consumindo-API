@@ -20,6 +20,18 @@ public class CEP implements Parcelable {
     }
 
 
+    protected CEP(Parcel in) {
+        cep = in.readString();
+        logradouro = in.readString();
+        complemento = in.readString();
+        bairro = in.readString();
+        localidade = in.readString();
+        uf = in.readString();
+        ibge = in.readString();
+        gia = in.readString();
+        ddd = in.readString();
+        siafi = in.readString();
+    }
 
     public String getCep() {
         return cep;
@@ -105,6 +117,18 @@ public class CEP implements Parcelable {
     public int describeContents() {
         return 0;
     }
+
+    public static final Creator<CEP> CREATOR = new Creator<CEP>() {
+        @Override
+        public CEP createFromParcel(Parcel in) {
+            return new CEP(in);
+        }
+
+        @Override
+        public CEP[] newArray(int size) {
+            return new CEP[size];
+        }
+    };
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {

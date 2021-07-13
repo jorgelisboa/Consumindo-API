@@ -1,30 +1,14 @@
 package com.example.api_treino;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.loader.content.AsyncTaskLoader;
 
-import android.annotation.SuppressLint;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.DialogInterface;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -34,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnAction;
     private EditText etCep;
     private List<CEP> ceps = new ArrayList<>();
-    public static final String CHANNEL_1_ID = "channel1";
-    public static final String CHANNEL_2_ID = "channel2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         etCep = findViewById(R.id.etCep);
         btnAction = findViewById(R.id.btnAction);
-
-
     }
 
     public void useApi(View view) {
