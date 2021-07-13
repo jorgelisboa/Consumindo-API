@@ -30,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void useApi(View view) {
-        Tarefa tarefa = new Tarefa();
-        tarefa.execute("https://viacep.com.br/ws/" + etCep.getText().toString() + "/json/");
+        if (etCep.getText().toString().length() == 8){
+            Tarefa tarefa = new Tarefa();
+            tarefa.execute("https://viacep.com.br/ws/" + etCep.getText().toString() + "/json/");
+        }
     }
 
 
@@ -49,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void exibirDados() {
-            if (ceps != null){
+            if (ceps != null) {
                 for(CEP cep : ceps){
                     Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                     intent.putExtra("cep", cep);
                     startActivity(intent);
                 }
+            } else {
+                etCep.setError("CEP inválido");
             }
         }
     }

@@ -27,29 +27,25 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
         Objects.requireNonNull(supportActionBar)!!.hide()
 
-
         createNotification()
-
-        var txtFinalizar = findViewById<TextView>(R.id.txtFinalizado)
-
         val cep = intent.extras?.getParcelable<CEP>("cep")
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Encomenda enviada.")
-                .setContentText("Enviamos seu pedido para " + cep?.getBairro()!!)
-                .setSmallIcon(R.drawable.correio)
-                .setPriority(NotificationManager.IMPORTANCE_HIGH)
-                .build()
-
+            .setContentTitle("Encomenda enviada.")
+            .setContentText("Enviamos seu pedido para " + cep?.getBairro()!!)
+            .setSmallIcon(R.drawable.clock)
+            .setPriority(NotificationManager.IMPORTANCE_HIGH)
+            .build()
         val notificationManager = NotificationManagerCompat.from(this)
         notificationManager.notify(NOTIFICATION_ID, notification)
 
+        var txtFinalizar = findViewById<TextView>(R.id.txtFinalizado)
         if (cep != null) {
             txtFinalizar.text =
                 "Muito obrigado pela preferência, acompanhe o processo de envio de sua encomenda pelo app. Enviamos seu pedido para " + cep.getLocalidade() + " no endereço: " + cep.getBairro() + " em " + cep.getLogradouro()
+        } else {
+            txtFinalizar.text = "Seu CEP não foi encontrado, desculpe pelo inconveniente."
         }
     }
-
-
 
     //Métodos são "fun"
     private fun createNotification() {
